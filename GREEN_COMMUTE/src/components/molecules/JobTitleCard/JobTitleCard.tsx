@@ -53,21 +53,29 @@ const JobTitleCard: React.FC<JobTitleProps> = ({
   const [saved, setSaved] = useState<boolean>(false)
 
   const handleSave = async () => {
-    const response = await axios.patch(
-      `${url}Joblist/${id}`,
+   const job = await  axios.get(`http://3.134.81.172:9006/jobs/${id}`);
+   console.log("In jobtitlecard");
+    console.log(job.data.saved);
+   job.data.saved = !saved;
+   console.log(job.data.saved);
+    /*const response = a
+    wait axios.put(
+      // `${url}Joblist/${id}`,
+      `http://localhost:9006/jobs/${id}` ,
       {
         saved: !saved,
       },
       {
         headers: { 'Content-type': 'application/json; charset=UTF-8' },
       }
-    )
+    ) */
+    const response = await axios.put(`http://3.134.81.172:9006/jobs/${id}`, job.data);
     setSaved(!saved)
     console.log(response)
   }
 
   useEffect(() => {
-    axios.get(`${url}Joblist/${id}`).then((res) => setSaved(res.data.saved))
+    axios.get(`http://localhost:9006/jobs/${id}`).then((res) => setSaved(res.data.saved))
   }, [id])
   return (
     <div data-testid="jobTitleCard">
