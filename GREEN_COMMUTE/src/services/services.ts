@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const getJob = async (jobid: number) => {
   const jobs: any = await axios
-    .get(`http://localhost:9006/jobs/${jobid}`)
+    .get(`http://3.134.81.172:9006/jobs/${jobid}`)
    return jobs.data;
 }
 export const getSkills = async () => {

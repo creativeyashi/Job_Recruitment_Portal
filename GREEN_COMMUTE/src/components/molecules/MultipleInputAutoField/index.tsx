@@ -236,7 +236,7 @@ const AutoComplete: React.FC<Props> = (props) => {
         >
           {value.map((selectedOption: any, index: number) => (
             <StyledTag
-              label={selectedOption.name}
+              label={selectedOption.location || selectedOption.name}
               {...getTagProps({ index })}
             />
           ))}
@@ -252,7 +252,7 @@ const AutoComplete: React.FC<Props> = (props) => {
           {groupedOptions.map((listOption, index) => (
             <li {...getOptionProps({ option, index })}>
               {/* change here */}
-              <span>{listOption.name}</span>
+              <span>{listOption.location || listOption.name }</span>
               <CheckIcon fontSize="small" />
             </li>
           ))}

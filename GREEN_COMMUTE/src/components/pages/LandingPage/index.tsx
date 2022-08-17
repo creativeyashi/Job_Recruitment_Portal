@@ -21,6 +21,7 @@ import jobLocationIcon from '../../../assets/image/Work.png'
 import React, { ReactElement, useEffect } from "react";
 import skillIcon from '../../../assets/image/Skills.png'
 import { useNavigate } from "react-router-dom";
+import { getLocations } from '../../../services/services'
 
 
 const steps = [
@@ -120,19 +121,28 @@ const LandingPage: React.FC = () => {
 
   useEffect(() => {
     const getstates = async () => {
-      const res = await axios.get(`${url}userLocation`);
+     const res = await axios.get(`http://3.134.81.172:9001/location/`);
+     // const res = await axios.get(`${url}userLocation`);
+     // const res = await getLocations();
+      console.log("data res");
+      console.log(res);
+     
       const location = await res.data;
       setState(location);
-      console.log(location);
+      console.log("inside landing page");
+      
+    
     };
     const getSkills = async () => {
-      const res = await axios.get(`${url}skills`);
+      const res = await axios.get(`http://3.134.81.172:9003/skills`);
       const location = await res.data;
+      console.log("Inside skill");
       setPosition(location);
       console.log(location);
     };
     getstates();
     getSkills();
+    
   }, []);
 
   let aqi: JSX.Element | ReactElement<any, any> | JSX.Element[] | null = null,
@@ -198,6 +208,8 @@ const LandingPage: React.FC = () => {
     }
   }
   else if (activeStep === 1) {
+    console.log("downnnn")
+    console.log(states)
     autocomplete = (
       <>
         <AutoComplete
@@ -230,7 +242,7 @@ const LandingPage: React.FC = () => {
           return (
             
             <Box className={classes.aqipos}>
-              <AirQualityIndex AQIIndex={value.AQI} />
+              <AirQualityIndex AQIIndex={value.aqi} />
               <Typography variant="h2" className={classes.aqivalue}>
                 {value.name}
               </Typography>
