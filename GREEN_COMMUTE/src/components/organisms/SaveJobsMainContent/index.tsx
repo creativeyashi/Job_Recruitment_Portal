@@ -4,7 +4,6 @@ import { makeStyles } from '@mui/styles'
 import { Grid, Typography } from '@mui/material'
 import theme from '../../../theme/theme'
 import SaveJobCard from '../../molecules/SaveJobCard'
-import { url } from '../../../dbServer'
 import axios from 'axios'
 interface Job {
   id: number
@@ -13,6 +12,7 @@ interface Job {
   companyName: string
   companyIcon: string
   location: string
+  fullAddress: string
   time: string
   description: string
   aboutTheCompany: string

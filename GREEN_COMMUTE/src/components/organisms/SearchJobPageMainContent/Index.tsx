@@ -18,6 +18,7 @@ interface Job {
   location: string
   time: string
   description: string
+  saved: boolean
   aboutTheCompany: string
 }
 
@@ -81,7 +82,7 @@ const Index = (props: {
   const classes = useStyles()
 
   const [jobDetail, setJobDetail] = useState(props.jobs[0])
-  console.log(jobDetail)
+  console.log('chalja', jobDetail.saved)
 
   const [showDescription, setshowDescription] = useState(true)
   const [select, setSelect] = useState(0)
@@ -194,6 +195,7 @@ const Index = (props: {
               companyName={jobDetail.companyName}
               companyAddress={jobDetail.location}
               jobUploadedTime={jobDetail.time}
+              saved={jobDetail.saved}
             />
             <Box className={classes.divider} />
             {showDescription ? (

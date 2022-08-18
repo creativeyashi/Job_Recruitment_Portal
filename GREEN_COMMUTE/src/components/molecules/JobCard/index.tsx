@@ -13,6 +13,7 @@ export type CardProps = {
   id: number
   companyName: string
   location: string
+  fullAddress: string
   time: string
   companyIcon: string
   title: string
@@ -96,7 +97,16 @@ const useStyles = makeStyles({
 })
 
 const FindJobsCard: React.FC<CardProps> = (props) => {
-  const { id, companyName, location, time, title, companyIcon, onClick } = props
+  const {
+    id,
+    companyName,
+    location,
+    time,
+    fullAddress,
+    title,
+    companyIcon,
+    onClick,
+  } = props
   const cardContext = useContext(JobContext)
   const styles = useStyles()
   const routes = [Bike, Bus, Car, Metro]
@@ -137,7 +147,15 @@ const FindJobsCard: React.FC<CardProps> = (props) => {
                     {companyName}
                   </Typography>
                 </Grid>
-
+                <Grid item>
+                  <Typography
+                    data-testid="address"
+                    variant="caption2"
+                    className={styles.location}
+                  >
+                    {fullAddress}
+                  </Typography>
+                </Grid>
                 <Grid item>
                   <Typography
                     data-testid="address"

@@ -10,7 +10,6 @@ import Button from '../../atoms/Button/index'
 import FileUpload from '../../../components/molecules/FileUpload'
 import UploadSuccess from '../../../components/molecules/UploadSuccess'
 import axios from 'axios'
-import { url } from '../../../dbServer'
 
 export interface JobTitleProps {
   id: number
@@ -19,6 +18,7 @@ export interface JobTitleProps {
   companyName: string
   companyAddress: string
   jobUploadedTime: string
+  saved: boolean
 }
 
 const JobTitleCard: React.FC<JobTitleProps> = ({
@@ -28,6 +28,7 @@ const JobTitleCard: React.FC<JobTitleProps> = ({
   companyAddress,
   jobUploadedTime,
   companyLogo,
+  saved,
 }: JobTitleProps) => {
   const companyAndAddressStyle = {
     fontSize: '12px',
@@ -50,33 +51,33 @@ const JobTitleCard: React.FC<JobTitleProps> = ({
   const [picked, setPicked] = useState<boolean>(false)
   const [dialog, setDialog] = useState<boolean>(false)
   const moreIconStyles = { marginTop: '12px' }
-  const [saved, setSaved] = useState<boolean>(false)
+  const [save, setSaved] = useState<boolean>()
 
   const handleSave = async () => {
-   const job = await  axios.get(`http://3.134.81.172:9006/jobs/${id}`);
-   console.log("In jobtitlecard");
-    console.log(job.data.saved);
-   job.data.saved = !saved;
-   console.log(job.data.saved);
-    /*const response = a
-    wait axios.put(
-      // `${url}Joblist/${id}`,
-      `http://localhost:9006/jobs/${id}` ,
-      {
-        saved: !saved,
-      },
-      {
-        headers: { 'Content-type': 'application/json; charset=UTF-8' },
-      }
-    ) */
-    const response = await axios.put(`http://3.134.81.172:9006/jobs/${id}`, job.data);
+    const job = await axios.get(`http://3.134.81.172:9006/jobs/${id}`)
+    console.log('In jobtitlecard')
+    console.log(job.data.saved)
+    job.data.saved = !saved
+    console.log(job.data.saved)
+
+    const response = await axios.put(
+      `http://3.134.81.172:9006/jobs/${id}`,
+      job.data
+    )
     setSaved(!saved)
     console.log(response)
   }
 
+  // useEffect(() => {
+  //   axios.get(`http://localhost:9006/jobs/${id}`).then((res) => {
+  //   setSaved(res.data.saved)})
+  // }, [id])
+
   useEffect(() => {
-    axios.get(`http://localhost:9006/jobs/${id}`).then((res) => setSaved(res.data.saved))
-  }, [id])
+    console.log('inside abc', saved)
+    setSaved(saved)
+  }, [])
+
   return (
     <div data-testid="jobTitleCard">
       <Stack
@@ -138,7 +139,7 @@ const JobTitleCard: React.FC<JobTitleProps> = ({
             <Stack direction={'row'}>
               <Box sx={{ marginTop: '20px', marginBottom: '25px' }}>
                 <Button
-                  children={!saved ? 'Save' : 'Unsave'}
+                  children={!save ? 'Save' : 'Unsave'}
                   variant="outlined"
                   style={{
                     background: '#FFFFFF',

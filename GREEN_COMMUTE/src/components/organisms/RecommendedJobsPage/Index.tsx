@@ -11,6 +11,7 @@ interface Job {
   companyName: string
   location: string
   time: string
+  fullAddress: string
   companyIcon: string
   title: string
 }
@@ -54,7 +55,6 @@ const useStyles = makeStyles({
 const heading = 'Recommended for you'
 const subHeading = 'Based on your profile, skills and search history'
 const chipsData = ['Past 24 hrs', 'Full time', 'Fresher']
-
 const Index = (props: {
   jobs: Job[]
   showFilter: boolean
@@ -140,6 +140,7 @@ const Index = (props: {
             job: {
               id: number
               companyName: string
+              fullAddress: string
               location: string
               time: string
               companyIcon: string
@@ -152,6 +153,7 @@ const Index = (props: {
                 <FindJobsCard
                   id={job.id}
                   companyName={job.companyName}
+                  fullAddress={job.fullAddress}
                   location={job.location}
                   time={job.time}
                   companyIcon={job.companyIcon}
