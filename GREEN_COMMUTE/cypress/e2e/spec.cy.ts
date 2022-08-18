@@ -1,4 +1,15 @@
-import { RobotEyes, RobotHands, Dependencies, Dependency } from '../Robot';
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable jest/no-identical-title */
+/* eslint-disable max-nested-callbacks */
+/* eslint-disable jest/expect-expect */
+// eslint-disable-next-line eslint-comments/no-duplicate-disable
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable eslint-comments/no-duplicate-disable */
+/* eslint-disable eslint-comments/disable-enable-pair */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable no-undef */
+import { RobotEyes, RobotHands, Dependencies, Dependency,SavedJobs } from '../Robot';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false;
@@ -9,6 +20,7 @@ const robotEyes = new RobotEyes();
 const robotHands = new RobotHands();
 const dependencies = new Dependencies()
 const dependency = new Dependency();
+const savejobs = new SavedJobs();
 
 describe('Application functionality testing', () => {
   it('navigate to greencommute landing page', () => {
@@ -28,10 +40,6 @@ describe('Application functionality testing', () => {
     robotHands.clickOnId('custom-input-demo-option-0').wait(3000);
     robotHands.clickOnDomElement('[data-testid="handleNextStepper"]').wait(2000);
 
-    //location-on landing Page
-
-    // robotHands.clickOnDomElement('#custom-input-demo').wait(2000);
-    // robotHands.clickOnId('custom-input-demo-option-0').wait(1000);
 
     robotHands.clickOnDomElement('#autoCompleteInput').wait(1000);
     cy.get("li[role='option']").each(function($ele,index,$list){
@@ -80,5 +88,22 @@ describe('Application FInd Job Page', () => {
   })
 
 })
+
+
+describe('Application to Save And Unsave The Job',()=>{
+  it('save Job',()=>{
+  robotHands.clickOnDomElement(':nth-child(1) > .MuiPaper-root').wait(2000);
+  robotHands.clickOnDomElement('.css-m69qwo-MuiStack-root > :nth-child(1) > .MuiButtonBase-root').wait(2000);
+})
+
+it('navigate to Saved job', () => {
+  savejobs.visitWikipedia();
+  robotEyes.seesMainPage;
+})
+
+
+});
+
+
 
 });

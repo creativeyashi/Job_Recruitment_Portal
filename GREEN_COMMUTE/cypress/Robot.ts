@@ -14,6 +14,13 @@ export class Dependency extends BaseDependencies {
     }
 }
 
+export class SavedJobs extends BaseDependencies {
+   
+    visitWikipedia(){
+        this.accessUrl('/savedJobCard');
+    }
+}
+
 export class RobotEyes extends BaseEyes{
     seesMainPage(){
         this.seesDomVisible("Main page")
