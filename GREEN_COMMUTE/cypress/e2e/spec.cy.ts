@@ -25,12 +25,16 @@ const savejobs = new SavedJobs();
 describe('Application functionality testing', () => {
   it('navigate to greencommute landing page', () => {
     dependencies.visitWikipedia();
+
+  
   })
 
   it('search for the elements',()=>{
     robotEyes.seesMainPage;
     robotEyes.seesDomContainText(':nth-child(1) > .MuiStepLabel-root > .MuiStepLabel-labelContainer > .MuiStepLabel-label > .MuiTypography-root',
     'Your Location');
+
+    
   })
 
 
@@ -93,7 +97,7 @@ describe('Application FInd Job Page', () => {
 describe('Application to Save And Unsave The Job',()=>{
   it('save Job',()=>{
   robotHands.clickOnDomElement(':nth-child(1) > .MuiPaper-root').wait(2000);
-  robotHands.clickOnDomElement('.css-m69qwo-MuiStack-root > :nth-child(1) > .MuiButtonBase-root').wait(2000);
+  robotHands.clickOnDomElement('.css-m69qwo-MuiStack-root > :nth-child(3) > .MuiButtonBase-root').wait(2000);
 })
 
 it('navigate to Saved job', () => {
