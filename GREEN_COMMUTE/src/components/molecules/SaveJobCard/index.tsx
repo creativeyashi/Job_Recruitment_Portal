@@ -50,6 +50,7 @@ const SaveJobCard: React.FC<Props> = (props) => {
   const routes = [Bus, Car, Metro]
   const classes = useStyles()
   console.log(logo)
+
   return (
     <Card
       className={classes.root}
