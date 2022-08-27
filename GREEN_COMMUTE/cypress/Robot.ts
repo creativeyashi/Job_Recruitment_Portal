@@ -3,20 +3,20 @@ import { BaseHands, BaseEyes, BaseDependencies } from './robots/BaseRobot';
 
 export class Dependencies extends BaseDependencies {
    
-    visitWikipedia(){
+    visitGreenCommute(){
         this.accessUrl('/');
     }
 }
 export class Dependency extends BaseDependencies {
    
-    visitWikipedia(){
+    visitGreenCommute(){
         this.accessUrl('/findJobs');
     }
 }
 
 export class SavedJobs extends BaseDependencies {
    
-    visitWikipedia(){
+    visitGreenCommute(){
         this.accessUrl('/savedJobCard');
     }
 }

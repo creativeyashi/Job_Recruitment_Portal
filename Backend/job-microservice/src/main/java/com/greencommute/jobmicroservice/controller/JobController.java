@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/jobs")
+@RequestMapping("/api/v1/jobs")
 @CrossOrigin
 public class JobController {
 

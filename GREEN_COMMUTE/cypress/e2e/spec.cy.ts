@@ -24,7 +24,7 @@ const savejobs = new SavedJobs();
 
 describe('Application functionality testing', () => {
   it('navigate to greencommute landing page', () => {
-    dependencies.visitWikipedia();
+    dependencies.visitGreenCommute();
 
   
   })
@@ -65,7 +65,7 @@ describe('Application functionality testing', () => {
 
 describe('Application FInd Job Page', () => {
   it('navigate to greencommute Find Job page', () => {
-    dependency.visitWikipedia();
+    dependency.visitGreenCommute();
   })
 
   it('search for the elements',()=>{
@@ -101,7 +101,7 @@ describe('Application to Save And Unsave The Job',()=>{
 })
 
 it('navigate to Saved job', () => {
-  savejobs.visitWikipedia();
+  savejobs.visitGreenCommute();
   robotEyes.seesMainPage;
 })
 

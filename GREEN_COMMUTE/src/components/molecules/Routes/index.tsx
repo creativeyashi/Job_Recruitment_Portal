@@ -16,6 +16,7 @@ import mapImage from '../../../assets/image/Map.png'
 import Ola from '../../../assets/icons/OlaLogo.png'
 import Uber from '../../../assets/icons/UberLogo.png'
 import Rapido from '../../../assets/icons/RapidoLogo.png'
+import scooty from '../../../assets/icons/bike.svg'
 import {
   Train,
   DirectionsBus,
@@ -85,7 +86,7 @@ const Routes: React.FC = () => {
             data-testid="bikeIcon"
             disabled
           >
-            <TwoWheeler color={active === 'bike' ? 'primary' : undefined} />
+            <img src={scooty} alt="" color={active === 'bike' ? 'primary' : undefined} />
           </IconButton>
         </Box>
         <Box>

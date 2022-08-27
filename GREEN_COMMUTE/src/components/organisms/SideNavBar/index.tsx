@@ -88,7 +88,7 @@ const SideNav: React.FC = () => {
   return (
     <>
       <Grid container className={styles.root}>
-        <Grid item className={styles.item}>
+        <Grid item className={styles.item} pl={5.25} mb={2}>
           {buttons.map((button) => {
             return (
               <MenuButton
